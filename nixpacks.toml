@@ -1,11 +1,8 @@
-[phases.setup]
-nixPkgs = ["jdk17", "maven"]
+[providers]
+java = "17"
 
 [phases.build]
-cmds = [
-    "chmod +x ./mvnw",
-    "./mvnw clean package -DskipTests"
-]
+cmd = "./mvnw clean package -DskipTests"
 
 [phases.start]
 cmd = "java -Dserver.port=$PORT $JAVA_OPTS -jar target/*.jar"
